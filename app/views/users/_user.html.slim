@@ -1,0 +1,10 @@
+tr
+  td
+    = user.name
+  td
+    = user.email
+  td
+    - if user.friendship_with_current_user(current_user)
+      = link_to 'Unfriend', friendship_path(user.friendship_with_current_user(current_user)), method: :delete
+    - else
+      = link_to 'Friend', friendships_path(user: user), method: :post
