@@ -13,9 +13,16 @@ class UsersController < ApplicationController
   end
 
   def friends
-    user_ids = Friendship.where(friend_to: current_user).pluck(:friend_id)
-    @users = User.find(user_ids)
+    user_ids = Friendship.where('friend_to_id = ? OR friend_id = ?', current_user.id, current_user.id).pluck(:friend_id)
+    user_ids << Friendship.where('friend_to_id = ? OR friend_id = ?', current_user.id, current_user.id).pluck(:friend_to_id)
+    user_ids = user_ids.flatten.reject{|id| id == current_user.id}
+    @users = user_ids.empty? ? [] : User.find(user_ids) 
     render 'index'
   end
 
+  private
+
+    def user_params
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    end
 end

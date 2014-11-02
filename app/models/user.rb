@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   has_many :friend_to, through: :friendship
 
   def friendship_with_current_user(user)
-    Friendship.where(friend: self, friend_to: user).try(:first)
+    my_friend = Friendship.where(friend: self, friend_to: user).try(:first)
+    i_am_friend = Friendship.where(friend: user, friend_to: self).try(:first)
+    friendship = my_friend || i_am_friend
   end
+
 end

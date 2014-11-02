@@ -4,7 +4,10 @@ tr
   td
     = user.email
   td
-    - if user.friendship_with_current_user(current_user)
-      = link_to 'Unfriend', friendship_path(user.friendship_with_current_user(current_user)), method: :delete
+    - friendship = user.friendship_with_current_user(current_user)
+    - if friendship
+      = link_to 'Unfriend', friendship_path(friendship), method: :delete
+      |  |
+      =< link_to 'Open Conversation', messages_path(id: friendship.id)
     - else
       = link_to 'Friend', friendships_path(user: user), method: :post
