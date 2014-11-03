@@ -18,6 +18,8 @@ gem 'devise'
 gem 'slim'
 gem 'bootstrap-sass', '~> 3.3.0'
 gem 'autoprefixer-rails'
+gem 'private_pub'
+gem 'thin'
 
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes

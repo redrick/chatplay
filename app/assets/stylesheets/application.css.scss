@@ -16,3 +16,17 @@
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+p {
+  padding: 10px;
+}
+p.bg-warning {
+  margin-right: 20%;
+}
+p.bg-info {
+  margin-left: 20%;
+}
+input[type="text"] {
+  width: 70%;
+  margin-bottom: 5%;
+}

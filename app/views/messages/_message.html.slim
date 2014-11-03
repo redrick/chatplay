@@ -1,6 +1,6 @@
-.center
+p class="#{message.user == current_user ? 'bg-info' : 'bg-warning'}"
   = message.user.email
   | |
-  = message.user.created_at
+  = message.created_at
   br
   = message.content
