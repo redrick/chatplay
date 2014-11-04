@@ -1,4 +1,15 @@
 <% publish_to "/messages/#{@message.friendship_id}" do %>
-  $("#messages").append("<%= j render(@message) %>");
+  message = $("<%= j render(@message) %>");
+  current_user = $('#current_user').val();
+  user = "<%= @message.user_id %>";
+  if (current_user == user) {
+    custom_class = 'bg-info';
+  } else {
+    custom_class = 'bg-warning';
+  }
+  message.removeClass();
+  message.addClass(custom_class);
+  $("#messages").append(message);
+
   $('#message_content').val('');
 <% end %>

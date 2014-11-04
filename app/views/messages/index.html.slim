@@ -10,4 +10,6 @@
     = f.text_field :content
     = f.submit "Send"
 
+= hidden_field_tag 'current_user', current_user.id
+
 = subscribe_to "/messages/#{params[:id]}"
