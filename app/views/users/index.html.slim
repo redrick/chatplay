@@ -11,3 +11,14 @@
     tbody
       - @users.each do |user|
         = render partial: 'user', locals: { user: user }
+
+
+- content_for :tooltip do
+  p.bg-primary
+    | You can see users in here.
+    br
+    | By clicking on "Friend" you can add users to friends
+    br
+    | Then after that you can click on "Open Conversation" and engage in real time chat with them :)
+    br
+    | Also there is Unfriend option for erasing user from your friends :(

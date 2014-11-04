@@ -1,15 +1,18 @@
-#messages.col-md-6
+#messages
   - unless @messages.empty?
     - @messages.each do |message|
       = render partial: 'message', locals: { message: message }
 
-.col-md-8
-  = form_for @new_message, remote: true do |f|
-    = f.hidden_field :friendship_id, value: @friendship.id
-    = f.hidden_field :user_id, value: current_user.id
-    = f.text_field :content
-    = f.submit "Send"
+= form_for @new_message, remote: true do |f|
+  = f.hidden_field :friendship_id, value: @friendship.id
+  = f.hidden_field :user_id, value: current_user.id
+  = f.text_field :content
+  = f.submit "Send"
 
 = hidden_field_tag 'current_user', current_user.id
 
 = subscribe_to "/messages/#{params[:id]}"
+
+- content_for :tooltip do
+  p.bg-primary
+    | Now you can chat with your friends in real time :)

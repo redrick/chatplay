@@ -42,3 +42,9 @@
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+
+<% content_for :tooltip do %>
+  <p class='bg-primary'>
+    You can edit your profile information here, but watch out, you need to fill out also your current password (security :) )
+  </p>
+<% end %>

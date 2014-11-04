@@ -8,14 +8,15 @@
 </head>
 <body>
   <% if notice %>
-    <p class="notice"><%= notice %></p>
+    <p class="bg-success"><%= notice %></p>
   <% end %>
   <% if alert %>
-    <p class="alert"><%= alert %></p>
+    <p class="bg-danger"><%= alert %></p>
   <% end %>
   <%= link_to root_path do %>
     <h1>CHATPLAY</h1>
   <% end %>
+  <h4>Appllication for demonstration purposes of realtime messaging</h4>
   <% if current_user %>
     <p>
       <%= current_user.email %> |
@@ -25,9 +26,14 @@
     </p>
   <% end %>
 
-  <div class="container-fluid">
+  <div class="container-fluid col-md-4">
     <%= yield %>
   </div>
+
+  <div class="container-fluid col-md-4">
+    <%= yield :tooltip %>
+  </div>
+
 
 </body>
 </html>
